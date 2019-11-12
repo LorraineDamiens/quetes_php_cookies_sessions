@@ -30,6 +30,11 @@
                     <h1>The Cookies Factory</h1>
                 </a>
             </div>
+            <?php if (isset($_SESSION['name'])){?>
+                <a class="navbar-brand" href="logout.php"> Log Out </a>
+            <?php } else { ?>
+                <a class="navbar-brand" href="login.php"> Log In  </a>
+            <?php } ?>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -48,6 +53,9 @@
         </div><!-- /.container-fluid -->
     </nav>
     <div class="container-fluid text-right">
-        <strong>Hello Wilder !</strong>
+        <strong>Hello <?php if (isset($_SESSION['name'])){
+
+            echo $_SESSION['name']; }?>!</strong>
+
     </div>
 </header>

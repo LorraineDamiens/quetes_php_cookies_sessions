@@ -1,3 +1,12 @@
+
+<?php
+session_start();
+if (isset($_POST['name']))
+{
+    $_SESSION['name'] = $_POST['name'];
+   header("Location:index.php");
+}
+?>
 <?php require 'inc/head.php'; ?>
 <div class="container" style="margin-top:40px">
     <div class="row">
@@ -7,7 +16,7 @@
                     <strong> Sign in to continue</strong>
                 </div>
                 <div class="panel-body">
-                    <form role="form" action="#" method="POST">
+                    <form role="form" method="POST" action=" <?= $_SERVER['PHP_SELF']?>">
                         <fieldset>
                             <div class="row">
                                 <div class="center-block">
@@ -23,7 +32,7 @@
                                             <span class="input-group-addon">
                                               <i class="glyphicon glyphicon-user"></i>
                                             </span>
-                                            <input class="form-control" placeholder="Username" name="loginname"
+                                            <input class="form-control" placeholder="Username" name="name"
                                                    type="text" autofocus>
                                         </div>
                                     </div>

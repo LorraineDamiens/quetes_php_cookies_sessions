@@ -1,3 +1,23 @@
+<?php
+session_start();
+
+require 'inc/data/products.php';
+
+if (array_key_exists('add_to_cart', $_GET)) {
+$id = $_GET ['add_to_cart'];
+ if (isset($_COOKIE["panier"]) && isset($_COOKIE["panier"][$id])) {
+      $data = unserialize($_COOKIE["panier"][$id]);
+      $data['quantity']++;
+      setcookie("panier[$id]", serialize($data));
+   } else {
+      setcookie("panier[$id]", serialize(['quantity' => 1, 'product' => $catalog[$id]]));
+   }
+}
+
+?>
+
+
+
 <?php require 'inc/data/products.php'; ?>
 <?php require 'inc/head.php'; ?>
 <section class="cookies container-fluid">
